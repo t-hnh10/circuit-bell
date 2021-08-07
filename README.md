@@ -92,6 +92,19 @@ To get a local copy up and running follow these simple steps.
 
 ## Usage
 
+The program requires a list of URLs and Discord webhooks, for example:
+
+```python
+from discord import Webhook, RequestsWebhookAdapter
+
+hada_labo_webhook = Webhook.partial(WEBHOOK_ID, WEBHOOK_TOKEN,\
+ adapter=RequestsWebhookAdapter())
+
+hada_labo_list = ['https://www.stylevana.com/en_AU/rohto-mentholatum-hada-labo-shirojyun-premium-whitening-lotion-170ml-moist-japan-version-170ml-random-delivery-on-packaging-3.html']
+```
+
+Import this file to the `main.py` file.
+
 Run the following command to execute the program:
 ```sh
 $ python main.py
