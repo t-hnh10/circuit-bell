@@ -107,6 +107,6 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@t_hnh10](https://twitter.com/t_hnh10) - huynh.tony55@gmail.com
+Tony Huynh - [@t_hnh10](https://twitter.com/t_hnh10) - huynh.tony55@gmail.com
 
 Project Link: [https://github.com/t-hnh10/circuit-bell](https://github.com/t-hnh10/circuit-bell)
