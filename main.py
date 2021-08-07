@@ -4,16 +4,21 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import re
 import config
+import csv
+import datetime
 
 options = webdriver.FirefoxOptions()
 options.headless = True
 driver = webdriver.Firefox(options=options)
-my_list=''
+product_list = ''
+
+f = open('data.csv', 'a')
+writer = csv.writer(f)
 
 def response(name, link, price):
     return (f':squeeze_bottle: Name: [{name}]({link})\nPrice: **{price}**\n')
 
-def stylevana(links, my_list, webhook):
+def stylevana(links, product_list, webhook):
     for link in links:
         driver.get(link)
         html_text = driver.page_source
@@ -21,15 +26,17 @@ def stylevana(links, my_list, webhook):
         name = soup.find('h1', class_='product-name-h1').text
         price = soup.find('span', class_='price', id=re.compile('^product-price')).text.replace('\n', '')
         link = soup.find('link', rel='canonical')['href']
-        my_list += response(name, link, price)
-    webhook.send('Store: *Stylevana*\n' + my_list)
+        product_list += response(name, link, price)
+        writer.writerow([datetime.datetime.now(), name, price, link])
+    webhook.send('Store: *Stylevana*\n' + product_list)
 
 # HADA LABO
 
-stylevana(config.hada_labo_list, my_list, config.hada_labo_webhook)
+stylevana(config.hada_labo_list, product_list, config.hada_labo_webhook)
 
 # COSRX
 
-stylevana(config.cosrx_list, my_list, config.cosrx_webhook)
+stylevana(config.cosrx_list, product_list, config.cosrx_webhook)
 
+f.close()
 driver.quit()
