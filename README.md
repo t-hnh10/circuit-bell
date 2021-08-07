@@ -81,6 +81,8 @@ To get a local copy up and running follow these simple steps.
 
 * geckodriver: Download [here](https://github.com/mozilla/geckodriver/releases/) and place in the same directory as this repository.
 
+* Firefox: Download [here](https://www.mozilla.org/en-US/firefox/new/)
+
 ### Installation
 
 1. Clone the repo
