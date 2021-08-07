@@ -103,6 +103,11 @@ hada_labo_webhook = Webhook.partial(WEBHOOK_ID, WEBHOOK_TOKEN,\
 hada_labo_list = ['https://www.stylevana.com/en_AU/rohto-mentholatum-hada-labo-shirojyun-premium-whitening-lotion-170ml-moist-japan-version-170ml-random-delivery-on-packaging-3.html']
 ```
 
+Ensure the script is executable with the following command:
+```sh
+sudo chmod +x main.py
+```
+
 Import this file to the `main.py` file.
 
 Run the following command to execute the program:
