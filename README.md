@@ -79,7 +79,7 @@ To get a local copy up and running follow these simple steps.
   $ python3 -m pip install -U discord.py
   ```
 
-* geckodriver: Download [here](https://github.com/mozilla/geckodriver/releases/) and place in the same directory as this repository.
+* geckodriver: Download [here](https://github.com/mozilla/geckodriver/releases/) and place it in a directory such as `/usr/bin`.
 
 * Firefox: Download [here](https://www.mozilla.org/en-US/firefox/new/)
 
