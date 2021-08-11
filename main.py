@@ -38,5 +38,13 @@ stylevana(config.hada_labo_list, product_list, config.hada_labo_webhook)
 
 stylevana(config.cosrx_list, product_list, config.cosrx_webhook)
 
+# Purito
+
+stylevana(config.purito_list, product_list, config.purito_webhook)
+
+# Pyunkang Yul
+
+stylevana(config.pyunkang_yul_list, product_list, config.pyunkang_yul_webhook)
+
 f.close()
 driver.quit()
