@@ -24,7 +24,7 @@ def stylevana(links, product_list, webhook):
         html_text = driver.page_source
         soup = BeautifulSoup(html_text, 'lxml')
         name = soup.find('h1', class_='product-name-h1').text
-        price = soup.find('span', class_='price', id=re.compile('^product-price')).text.replace('\n', '')
+        price = soup.find('span', class_='price').text
         link = soup.find('link', rel='canonical')['href']
         product_list += response(name, link, price)
         writer.writerow([datetime.datetime.now(), name, price, link])
@@ -42,10 +42,10 @@ def lilabeauty(links, product_list, webhook):
         writer.writerow([datetime.datetime.now(), name, price, link])
     webhook.send('Store: *Lilabeauty*\n' + product_list)
 
-# HADA LABO
+# ROHTO
 
-stylevana(config.hada_labo_list, product_list, config.hada_labo_webhook)
-lilabeauty(config.hada_labo_list_lilabeauty, product_list, config.hada_labo_webhook)
+stylevana(config.rohto_list, product_list, config.rohto_webhook)
+lilabeauty(config.rohto_list_lilabeauty, product_list, config.rohto_webhook)
 
 # COSRX
 
@@ -61,6 +61,18 @@ lilabeauty(config.purito_list_lilabeauty, product_list, config.purito_webhook)
 
 stylevana(config.pyunkang_yul_list, product_list, config.pyunkang_yul_webhook)
 lilabeauty(config.pyunkang_yul_list_lilabeauty, product_list, config.pyunkang_yul_webhook)
+
+# Biore
+
+stylevana(config.biore_list, product_list, config.biore_webhook)
+
+# Shiseido
+
+stylevana(config.shiseido_list, product_list, config.shiseido_webhook)
+
+# SOME BY MI
+
+stylevana(config.some_by_mi_list, product_list, config.some_by_mi_webhook)
 
 f.close()
 driver.quit()
