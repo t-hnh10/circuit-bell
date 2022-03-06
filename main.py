@@ -30,6 +30,22 @@ def stylevana(links, product_list, webhook):
         writer.writerow([datetime.datetime.now(), name, price, link])
     webhook.send('Store: *Stylevana*\n' + product_list)
 
+def stylevana_options(link_objs, product_list, webhook):
+    for link_obj in link_objs:
+        link = link_obj['link']
+        value = link_obj['value']
+        driver.get(link)
+        html_text = driver.page_source
+        soup = BeautifulSoup(html_text, 'lxml')
+        name = soup.find('h1', class_='product-name-h1').text
+        option_price = soup.find('option', value=(f'{value}')).text
+        option = option_price.split(' -', 1)[0]
+        price = option_price.split('- ', 1)[1]
+        link = soup.find('link', rel='canonical')['href']
+        product_list = response(name, link, price) + f'Option: {option}'
+        writer.writerow([datetime.datetime.now(), name, price, link])
+    webhook.send('Store: *Stylevana*\n' + product_list)
+
 def lilabeauty(links, product_list, webhook):
     for link in links:
         driver.get(link)
@@ -59,7 +75,7 @@ lilabeauty(config.purito_list_lilabeauty, product_list, config.purito_webhook)
 
 # Pyunkang Yul
 
-stylevana(config.pyunkang_yul_list, product_list, config.pyunkang_yul_webhook)
+stylevana_options(config.pyunkang_yul_list, product_list, config.pyunkang_yul_webhook)
 lilabeauty(config.pyunkang_yul_list_lilabeauty, product_list, config.pyunkang_yul_webhook)
 
 # Biore
@@ -73,6 +89,10 @@ stylevana(config.shiseido_list, product_list, config.shiseido_webhook)
 # SOME BY MI
 
 stylevana(config.some_by_mi_list, product_list, config.some_by_mi_webhook)
+
+# Moonshot
+stylevana_options(config.moonshot_list, product_list, config.moonshot_webhook)
+lilabeauty(config.moonshot_list_lilabeauty, product_list, config.moonshot_webhook)
 
 f.close()
 driver.quit()
