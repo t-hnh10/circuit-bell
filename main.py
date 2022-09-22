@@ -90,8 +90,12 @@ stylevana(config.shiseido_list, product_list, config.shiseido_webhook)
 
 stylevana(config.some_by_mi_list, product_list, config.some_by_mi_webhook)
 
+# Laneige
+
+stylevana_options(config.laneige_list, product_list, config.laneige_webhook)
+
 # Moonshot
-stylevana_options(config.moonshot_list, product_list, config.moonshot_webhook)
+# stylevana_options(config.moonshot_list, product_list, config.moonshot_webhook)
 lilabeauty(config.moonshot_list_lilabeauty, product_list, config.moonshot_webhook)
 
 f.close()
